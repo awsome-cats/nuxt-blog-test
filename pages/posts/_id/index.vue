@@ -9,7 +9,7 @@
           Last updated on XXX
         </div>
         <div class="post-detail">
-          Written by Name
+          Written by Name pageID:{{ $route.params.id }}
         </div>
       </div>
       <p>Let me know what you think about the post , send a mail to <a href="feedback@my-awsome-domain.com">feedback@my-awsome-domain.com.</a></p>
