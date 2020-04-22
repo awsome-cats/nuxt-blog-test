@@ -9,7 +9,7 @@
     <!---- 投稿された記事の表示 --->
     <section class="existing-posts">
       <h1>Existing Posts</h1>
-      <PostList />
+      <PostList is-admin />
     </section>
     <!---- 投稿された記事の表示 end--->
   </div>
