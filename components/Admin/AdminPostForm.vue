@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="onSave()">
+  <form @submit.prevent="onSave">
     <!---- slot ---->
     <AppControlInput v-model="editPost.author">
       作者名
