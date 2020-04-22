@@ -54,7 +54,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: black;
+  background-color: rgb(77, 154, 218);
   z-index: 100;
   box-sizing: border-box;
   padding: 0 20px;

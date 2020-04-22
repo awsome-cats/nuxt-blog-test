@@ -1,12 +1,21 @@
 <template>
-  <div class="posts-page">
-    <h1>This is posts page</h1>
+  <div>
+    <div class="posts-page">
+      <h1>This is posts page</h1>
+    </div>
+    <section class="post-list">
+      <PostList />
+    </section>
   </div>
 </template>
 
 <script>
-export default {
+import PostList from '~/components/Posts/PostList'
 
+export default {
+  components: {
+    PostList
+  }
 }
 </script>
 
@@ -16,5 +25,14 @@ export default {
     justify-content: center;
     align-items: center;
   }
+
+  .post-list {
+  display: flex;
+  padding: 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
 
 </style>

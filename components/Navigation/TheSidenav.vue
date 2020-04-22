@@ -25,7 +25,7 @@
             </nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link to="/admin">
+            <nuxt-link to="/">
               Admin
             </nuxt-link>
           </li>
