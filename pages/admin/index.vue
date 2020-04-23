@@ -9,7 +9,7 @@
     <!---- 投稿された記事の表示 --->
     <section class="existing-posts">
       <h1>Existing Posts</h1>
-      <PostList is-admin />
+      <PostList is-admin :posts="loadedPosts" />
     </section>
     <!---- 投稿された記事の表示 end--->
   </div>
@@ -23,6 +23,11 @@ export default {
   components: {
     PostList,
     AppButton
+  },
+  computed: {
+    loadedPosts () {
+      return this.$store.getters.loadedPosts
+    }
   }
 }
 </script>
