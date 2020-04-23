@@ -2,25 +2,13 @@
   <div>
     <section class="post-list">
       <post-preview
-        id="1"
+        v-for="post in posts"
+        :id="post.id"
+        :key="post.id"
         :is-admin="isAdmin"
-        title="Hellothere"
-        preview-text="This is my first post!"
-        thumbnail="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRvixY4QGmYFbPhkU4UiZmFHyOfPibTEPvk3pZxy2u7AYtfDTO5&usqp=CAU"
-      />
-      <post-preview
-        id="2"
-        :is-admin="isAdmin"
-        title="自動化とZoom"
-        preview-text="自動化のすすめ"
-        thumbnail="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRvixY4QGmYFbPhkU4UiZmFHyOfPibTEPvk3pZxy2u7AYtfDTO5&usqp=CAU"
-      />
-      <post-preview
-        id="3"
-        :is-admin="isAdmin"
-        title="パンデミック"
-        preview-text="パンデミックが変えたこと"
-        thumbnail="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRvixY4QGmYFbPhkU4UiZmFHyOfPibTEPvk3pZxy2u7AYtfDTO5&usqp=CAU"
+        :title="post.title"
+        :preview-text="post.previewText"
+        :thumbnail="post.thumbnail"
       />
     </section>
   </div>
@@ -36,6 +24,10 @@ export default {
     isAdmin: {
       type: Boolean,
       default: false
+    },
+    posts: {
+      type: Array,
+      required: true
     }
   }
 }
