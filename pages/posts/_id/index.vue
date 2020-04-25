@@ -12,7 +12,7 @@
           Written by Name {{ loadedPost.author }}pageID:{{ $route.params.id }}
         </div>
         <div>
-          <!-- <div class="post-thumbnail" :style="{backgroundImage: 'url(' + loadedPost.thumbnail + ')'}" /> -->
+          <div class="post-thumbnail" :style="{backgroundImage: 'url(' + loadedPost.thumbnail + ')'}" />
           <div class="post-content">
           {{ loadedPost.content }}
         </div>
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-//import axios from 'axios'
 export default {
   async asyncData({$axios, params }) {
     try {

@@ -32,15 +32,9 @@
 </template>
 
 <script>
-import AppButton from '~/components/UI/AppButton'
-import AppControlInput from '~/components/UI/AppControlInput'
+
 export default {
-  components: {
-    AppButton,
-    AppControlInput
-  },
   props: {
-    // eslint-disable-next-line vue/require-default-prop
     post: {
       type: Object,
       required: false

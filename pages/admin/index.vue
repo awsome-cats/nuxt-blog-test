@@ -5,7 +5,6 @@
         Create Post
       </app-button>
     </section>
-
     <!---- 投稿された記事の表示 --->
     <section class="existing-posts">
       <h1>Existing Posts</h1>
@@ -16,14 +15,9 @@
 </template>
 
 <script>
-import AppButton from '~/components/UI/AppButton'
-import PostList from '~/components/Posts/PostList'
+
 export default {
   layout: 'admin',
-  components: {
-    PostList,
-    AppButton
-  },
   computed: {
     loadedPosts () {
       return this.$store.getters.loadedPosts
