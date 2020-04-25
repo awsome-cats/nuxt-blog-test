@@ -1,5 +1,7 @@
 require('dotenv').config();
+// .com
 const { API_URL } = process.env;
+
 export default {
   mode: 'universal',
   /*
@@ -43,11 +45,11 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/dotenv'
   ],
   axios: {
     credentials: false
-    // baseURL: process.env.BASE_URL ||
   },
   env: {API_URL},
   /*

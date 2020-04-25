@@ -12,7 +12,7 @@
           Written by Name {{ loadedPost.author }}pageID:{{ $route.params.id }}
         </div>
         <div>
-          <div class="post-thumbnail" :style="{backgroundImage: 'url(' + loadedPost.thumbnail + ')'}" />
+          <!-- <div class="post-thumbnail" :style="{backgroundImage: 'url(' + loadedPost.thumbnail + ')'}" /> -->
           <div class="post-content">
           {{ loadedPost.content }}
         </div>
@@ -24,18 +24,18 @@
 </template>
 
 <script>
-import axios from 'axios'
+//import axios from 'axios'
 export default {
   asyncData(context) {
-    return axios.get('https://nuxt-blogv2.firebaseio.com/post/' + context.params.id + '.json')
-    .then(res => {
+    try {
+      return axios.get(process.env.API_URL + '/post/' + context.params.id + '.json')
+      console.log(response)
       return {
-        loadedPost: res.data
+        loadedPost: response.data
       }
-    })
-    .catch(e => {
-      context.error(e)
-    })
+    } catch(e) {
+      console.log(e)
+    } 
   }
 }
 </script>
