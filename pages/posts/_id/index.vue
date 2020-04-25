@@ -26,12 +26,12 @@
 <script>
 //import axios from 'axios'
 export default {
-  asyncData(context) {
+  async asyncData({$axios, params }) {
     try {
-      return axios.get(process.env.API_URL + '/post/' + context.params.id + '.json')
-      console.log(response)
+      const response = await $axios.$get(process.env.API_URL + '/post/' + params.id + '.json')
+      
       return {
-        loadedPost: response.data
+        loadedPost: response
       }
     } catch(e) {
       console.log(e)
