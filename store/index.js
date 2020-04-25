@@ -12,26 +12,29 @@ export const mutations = {
   },
   addPost (state, post) {
     state.loadedPosts.push(post)
-  }
+  },
+  editPost(state, editedPost) {
+    // find specific single data
+    const postIndex = state.loadedPosts.findIndex(post => post.id === editedPost.id)
+    state.loadedPosts[postIndex] = editedPost
+  } 
 }
 
 export const actions = {
   async nuxtServerInit ({commit} ,{app}) {
     try {
       const data = await app.$axios.$get(process.env.API_URL + '/post.json')
-      const newArray = []
+      const newPosts = []
       for(const key in data) {
-        newArray.push({...data[key], id: key})
+        newPosts.push({...data[key], id: key})
       }
-      commit('setPosts', newArray)
+      commit('setPosts', newPosts)
     }
     catch(e){
      console.error(e)
    }
   },
-  setPosts (vuexContext, post) {
-    vuexContext.commit('setPosts', post)
-  },
+  
   async newPost({ commit }, post) {
     try {
       const createdPost = {...post, updatedDate: new Date() }
@@ -40,11 +43,19 @@ export const actions = {
     } catch(e) {
       console.error(e)
     }
-    
-    
-      
-  
-  }
+  },
+  editPost(vuexContext, editedPost) {
+    return this.$axios.$put(process.env.API_URL + '/post/' + editedPost.id + '.json', editedPost)
+    .then(res => {
+      vuexContext.commit('editPost', editedPost)
+    })
+      .catch(e => {
+        console.log(e)
+      })
+  },
+  setPosts ({commit}, post) {
+    commit('setPosts', post)
+  },
 }
 
 export const getters = {

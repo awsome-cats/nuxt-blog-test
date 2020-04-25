@@ -1,7 +1,8 @@
 <template>
   <div class="home-page">
     <section class="intro">
-      <h1>Get the Latest tech news!</h1>
+      <h2>あなたの街の気になるニュース、情報をGetできる!!
+      </h2>
     </section>
     <PostList :posts="loadedPosts" />
   </div>
@@ -34,7 +35,7 @@ export default {
   background-size: cover;
 }
 
-.intro h1 {
+.intro h2 {
   position: absolute;
   top: 10%;
   left: 5%;

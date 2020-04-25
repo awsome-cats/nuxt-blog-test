@@ -64,7 +64,7 @@ export default {
       console.log(this.editedPost)
     },
     onCancel () {
-      this.$router.push('/')
+      this.$router.push('/admin')
     }
   }
 
