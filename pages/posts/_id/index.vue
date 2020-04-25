@@ -2,14 +2,20 @@
   <div class="single-post-page">
     <section class="post">
       <h1 class="post-title">
-        Title of the post
+        {{loadedPost.title}}
       </h1>
       <div class="post-details">
         <div class="post-detail">
-          Last updated on XXX
+          Last updated on {{loadedPost.updatedDate}}
         </div>
         <div class="post-detail">
-          Written by Name pageID:{{ $route.params.id }}
+          Written by Name {{ loadedPost.author }}pageID:{{ $route.params.id }}
+        </div>
+        <div>
+          <div class="post-thumbnail" :style="{backgroundImage: 'url(' + loadedPost.thumbnail + ')'}" />
+          <div class="post-content">
+          {{ loadedPost.content }}
+        </div>
         </div>
       </div>
       <p>Let me know what you think about the post , send a mail to <a href="feedback@my-awsome-domain.com">feedback@my-awsome-domain.com.</a></p>
@@ -18,8 +24,19 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-
+  asyncData(context) {
+    return axios.get('https://nuxt-blogv2.firebaseio.com/post/' + context.params.id + '.json')
+    .then(res => {
+      return {
+        loadedPost: res.data
+      }
+    })
+    .catch(e => {
+      context.error(e)
+    })
+  }
 }
 </script>
 
@@ -53,6 +70,13 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.post-thumbnail {
+   width: 100%;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
 }
 
 @media (min-width: 768px) {

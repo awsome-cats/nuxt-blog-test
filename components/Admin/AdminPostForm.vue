@@ -1,16 +1,19 @@
 <template>
   <form @submit.prevent="onSave">
     <!---- slot ---->
-    <AppControlInput v-model="editPost.author">
+    <AppControlInput v-model="editedPost.author">
       作者名
     </AppControlInput>
-    <AppControlInput v-model="editPost.title">
+    <AppControlInput v-model="editedPost.title">
       タイトル
     </AppControlInput>
-    <AppControlInput v-model="editPost.thumbnailLink">
+    <AppControlInput v-model="editedPost.thumbnail">
       サムネイルリンク
     </AppControlInput>
-    <AppControlInput v-model="editPost.content" control-type="textarea">
+    <AppControlInput v-model="editedPost.previewText" control-type="textarea">
+      プレビュー
+    </AppControlInput>
+    <AppControlInput v-model="editedPost.content" control-type="textarea">
       コンテント
     </AppControlInput>
     <AppButton type="submit">
@@ -45,10 +48,11 @@ export default {
   },
   data () {
     return {
-      editPost: this.post ? { ...this.post } : {
+      editedPost: this.post ? { ...this.post } : {
         author: '',
         title: '',
-        thumbnailLink: '',
+        thumbnail: '',
+        previewText: '',
         content: ''
       }
     }
@@ -56,8 +60,8 @@ export default {
   methods: {
     onSave () {
       // save
-      // eslint-disable-next-line no-console
-      console.log(this.editPost)
+      this.$emit('submit', this.editedPost)
+      console.log(this.editedPost)
     },
     onCancel () {
       this.$router.push('/')
