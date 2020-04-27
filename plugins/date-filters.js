@@ -13,22 +13,19 @@ const months = [
   '10月',
   '11月',
   '12月'
-];
+]
 
-const dateFilter = value => {
+const dateFilter = (value) => {
   return formatDate(value)
 }
 
-function formatDate(input) {
+function formatDate (input) {
   const date = new Date(input)
   const year = date.getFullYear()
   const month = date.getMonth()
   const day = date.getDate()
-  const formattedDate =  months[month] + day + '日' + year + '年'
+  const formattedDate = months[month] + day + '日' + year + '年'
   return formattedDate
 }
 
-
-
-
-Vue.filter('date' ,dateFilter)
+Vue.filter('date', dateFilter)

@@ -2,11 +2,11 @@
   <div class="single-post-page">
     <section class="post">
       <h1 class="post-title">
-        {{loadedPost.title}}
+        {{ loadedPost.title }}
       </h1>
       <div class="post-details">
         <div class="post-detail">
-          Last updated on {{loadedPost.updatedDate | date}}
+          Last updated on {{ loadedPost.updatedDate | date }}
         </div>
         <div class="post-detail">
           Written by Name {{ loadedPost.author }}pageID:{{ $route.params.id }}
@@ -14,8 +14,8 @@
         <div>
           <div class="post-thumbnail" :style="{backgroundImage: 'url(' + loadedPost.thumbnail + ')'}" />
           <div class="post-content">
-          {{ loadedPost.content }}
-        </div>
+            {{ loadedPost.content }}
+          </div>
         </div>
       </div>
       <p>Let me know what you think about the post , send a mail to <a href="feedback@my-awsome-domain.com">feedback@my-awsome-domain.com.</a></p>
@@ -25,16 +25,16 @@
 
 <script>
 export default {
-  async asyncData({$axios, params }) {
+  async asyncData ({ $axios, params }) {
     try {
       const response = await $axios.$get(process.env.API_URL + '/post/' + params.id + '.json')
-      
       return {
         loadedPost: response
       }
-    } catch(e) {
+    } catch (e) {
+      // eslint-disable-next-line no-console
       console.log(e)
-    } 
+    }
   }
 }
 </script>

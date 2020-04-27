@@ -1,7 +1,8 @@
 <template>
   <div class="home-page">
     <section class="intro">
-      <h2>あなたの街の気になるニュース、情報をGetできる!!
+      <h2>
+        あなたの街の気になるニュース、情報をGetできる!!
       </h2>
     </section>
     <PostList :posts="loadedPosts" />

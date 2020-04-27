@@ -35,6 +35,7 @@
 
 export default {
   props: {
+    // eslint-disable-next-line vue/require-default-prop
     post: {
       type: Object,
       required: false
@@ -55,6 +56,7 @@ export default {
     onSave () {
       // save
       this.$emit('submit', this.editedPost)
+      // eslint-disable-next-line no-console
       console.log(this.editedPost)
     },
     onCancel () {

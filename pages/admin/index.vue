@@ -2,7 +2,10 @@
   <div class="admin-page">
     <section class="new-post">
       <app-button @click="$router.push('/admin/new-post')">
-        Create Post
+        ブログを作成する
+      </app-button>
+      <app-button @click="onLogout">
+        ログアウト
       </app-button>
     </section>
     <!---- 投稿された記事の表示 --->
@@ -18,9 +21,16 @@
 
 export default {
   layout: 'admin',
+  middleware: 'auth',
   computed: {
     loadedPosts () {
       return this.$store.getters.loadedPosts
+    }
+  },
+  methods: {
+    onLogout () {
+      this.$store.dispatch('logout')
+      this.$router.push('/admin/auth')
     }
   }
 }

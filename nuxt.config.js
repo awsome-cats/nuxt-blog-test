@@ -1,7 +1,8 @@
-require('dotenv').config();
+require('dotenv').config()
 // .com
-const { API_URL } = process.env;
-
+const { API_URL } = process.env
+// eslint-disable-next-line camelcase
+const { FB_APIkey } = process.env
 export default {
   mode: 'universal',
   /*
@@ -41,7 +42,7 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    // '@nuxtjs/eslint-module'
   ],
   /*
   ** Nuxt.js modules
@@ -53,7 +54,11 @@ export default {
   axios: {
     credentials: false
   },
-  env: {API_URL},
+  // firebase:nuxt-blogV2
+  env: {
+    API_URL,
+    FB_APIkey
+  },
   /*
   ** Build configuration
   */

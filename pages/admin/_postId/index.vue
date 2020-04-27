@@ -1,7 +1,7 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <AdminPostForm :post="loadedPost" @submit='onSubmitted'/>
+      <AdminPostForm :post="loadedPost" @submit="onSubmitted" />
     </section>
   </div>
 </template>
@@ -12,28 +12,30 @@ import AdminPostForm from '~/components/Admin/AdminPostForm'
 
 export default {
   layout: 'admin',
+  middleware: ['auth'],
   components: {
     AdminPostForm
   },
-  async asyncData({$axios, params}) {
+  async asyncData ({ $axios, params }) {
     try {
       const response = await $axios.$get(process.env.API_URL + '/post/' + params.postId + '.json')
-       return {
+      return {
         loadedPost: {
           ...response,
-          id: params.postId }
+          id: params.postId
+        }
       }
-    } catch(err) {
+    } catch (err) {
+      // eslint-disable-next-line no-console
       console.log(err)
     }
   },
-   
   methods: {
-    onSubmitted(editedPost) {
+    onSubmitted (editedPost) {
       this.$store.dispatch('editPost', editedPost)
-      .then(() => {
-        this.$router.push('/admin')
-      })
+        .then(() => {
+          this.$router.push('/admin')
+        })
     }
   }
 }
